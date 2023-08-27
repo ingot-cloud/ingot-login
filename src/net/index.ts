@@ -5,7 +5,7 @@ import {
   onResponseFulfilled,
   onResponseRejected,
 } from "./interceptor/response";
-import type { R } from "./types";
+import type { R } from "@/models";
 import NProgress from "@/components/nprogress";
 import CancelManager from "./cancel";
 

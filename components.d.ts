@@ -21,7 +21,6 @@ declare module '@vue/runtime-core' {
     InIcon: typeof import('./src/components/InIcon.vue')['default']
     InIconCollection: typeof import('./src/components/InIconCollection.vue')['default']
     InQrcode: typeof import('./src/components/qrcode/InQrcode.vue')['default']
-    InSelect: typeof import('./src/components/select/InSelect.vue')['default']
     'ITabler:arrowRight': typeof import('~icons/tabler/arrow-right')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

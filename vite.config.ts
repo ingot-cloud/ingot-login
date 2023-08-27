@@ -36,7 +36,7 @@ export default defineConfig(({ mode, command, ssrBuild }) => {
           {
             filename: "challenge",
             entry: "/src/pages/oauth2/challenge/main.ts",
-            template: "/src/pages/oauth2/challenge/challenge.html",
+            template: "challenge.html",
             injectOptions: {
               data: {
                 //将环境变量 VITE_APP_TITLE 赋值给 title 方便 html页面使用 title 获取系统标题
