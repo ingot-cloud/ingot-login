@@ -26,7 +26,7 @@
         </Transition>
       </div>
       <div class="login-copyright-bar">
-        <div class="login-copyright">{{ login.copyright }}${aaaa}</div>
+        <div class="login-copyright">{{ login.copyright }}</div>
       </div>
     </div>
   </div>

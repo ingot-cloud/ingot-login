@@ -110,10 +110,6 @@ export default defineConfig(({ mode, command, ssrBuild }) => {
     build: {
       outDir: "dist",
       rollupOptions: {
-        input: {
-          // entry: resolve(__dirname, "index.html"),
-          // challenge: resolve(__dirname, "src/pages/oauth2/challenge/main.ts"),
-        },
         output: {
           chunkFileNames: "static/js/[name]-[hash].js",
           entryFileNames: "static/js/[name]-[hash].js",
