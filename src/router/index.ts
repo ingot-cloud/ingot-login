@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import { hasNullParameter } from "@/utils/requiredParameters";
+import { useLoginStore } from "@/stores/modules/login";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -22,6 +23,8 @@ const router = createRouter({
             },
           };
         }
+        // 装载参数
+        useLoginStore().set(query);
         return true;
       },
       component: () => import("@/pages/oauth2/challenge/IndexPage.vue"),

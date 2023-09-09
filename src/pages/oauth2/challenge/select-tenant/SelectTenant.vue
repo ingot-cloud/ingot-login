@@ -26,12 +26,10 @@
 import type { PropType } from "vue";
 import type { TenantItem } from "@/models";
 import TenantItemView from "./TenantItem.vue";
-import Router from "@/router";
+import { useLoginStore } from "@/stores/modules/login";
 
-const props = defineProps({
-  code: {
-    type: String,
-  },
+const loginStore = useLoginStore();
+defineProps({
   list: {
     type: Array as PropType<Array<TenantItem>>,
   },
@@ -45,7 +43,7 @@ const handleBack = () => {
 };
 const handleItemClick = (params: TenantItem) => {
   loading.value = true;
-  // loading.value = false;
+  loginStore.authorizeCodeRequest(params.id!);
 };
 </script>
 <style scoped lang="postcss">

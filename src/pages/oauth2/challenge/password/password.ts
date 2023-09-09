@@ -1,3 +1,5 @@
+import { useLoginStore } from "@/stores/modules/login";
+
 const formModel = reactive({
   username: "${aaaa}",
   password: "",
@@ -20,7 +22,15 @@ const init = () => {
 const handleLogin = () => {
   loading.value = true;
   return new Promise((resolve) => {
-    loading.value = false;
+    useLoginStore()
+      .preAuthorize(formModel)
+      .then((result) => {
+        loading.value = false;
+        resolve(result);
+      })
+      .catch(() => {
+        loading.value = false;
+      });
   });
 };
 

@@ -27,3 +27,13 @@ export interface LoginConfig {
    */
   desc: string;
 }
+
+export interface RequiredParameters {
+  pre_grant_type?: string;
+  client_id?: string;
+  code_challenge?: string;
+  response_type?: string;
+  redirect_uri?: string;
+  scope?: string;
+  state?: string;
+}

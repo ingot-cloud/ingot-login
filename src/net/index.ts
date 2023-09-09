@@ -11,7 +11,14 @@ import CancelManager from "./cancel";
 
 class Http {
   private instance: AxiosInstance;
+  private origin: AxiosInstance;
   public constructor() {
+    this.origin = axios.create({
+      baseURL: import.meta.env.VITE_APP_NET_BASE_URL || undefined,
+      timeout: import.meta.env.VITE_APP_NET_DEFAULT_TIMEOUT || 10_000,
+      timeoutErrorMessage:
+        import.meta.env.VITE_APP_NET_DEFAULT_TIMEOUT_MESSAGE || undefined,
+    });
     this.instance = axios.create({
       baseURL: import.meta.env.VITE_APP_NET_BASE_URL || undefined,
       timeout: import.meta.env.VITE_APP_NET_DEFAULT_TIMEOUT || 10_000,
@@ -42,6 +49,10 @@ class Http {
         return onResponseRejected(error);
       }
     );
+  }
+
+  getOrigin() {
+    return this.origin;
   }
 
   rawRequest<T = any>(config: AxiosRequestConfig): Promise<R<T>> {

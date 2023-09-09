@@ -19,8 +19,8 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { useLoginStore } from "@/stores/modules/app";
-const { login } = useLoginStore();
+import { useAppStore } from "@/stores/modules/app";
+const { login } = useAppStore();
 
 const route = useRoute();
 const handleBack = () => {

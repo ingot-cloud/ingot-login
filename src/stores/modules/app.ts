@@ -3,7 +3,7 @@ import type { LoginConfig } from "../types";
 /**
  * 全局配置
  */
-export const useLoginStore = defineStore("app.login", () => {
+export const useAppStore = defineStore("app", () => {
   const login = reactive<LoginConfig>({
     copyright: import.meta.env.VITE_APP_COPYRIGHT,
     loginBanner: import.meta.env.VITE_APP_LOGIN_BANNER,

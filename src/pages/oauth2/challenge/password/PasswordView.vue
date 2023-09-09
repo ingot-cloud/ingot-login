@@ -45,12 +45,12 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { useLoginStore } from "@/stores/modules/app";
+import { useAppStore } from "@/stores/modules/app";
 import password from "./password";
 import LoginInput from "../components/LoginInput.vue";
 import { Message } from "@/utils/message";
 
-const { login } = useLoginStore();
+const { login } = useAppStore();
 const emit = defineEmits(["success"]);
 
 // 定义verify组件引用

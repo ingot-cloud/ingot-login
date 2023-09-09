@@ -17,9 +17,9 @@ import {
   LineOptionsType,
   RoundOptionsType,
 } from "@/components/qrcode";
-import { useLoginStore } from "@/stores/modules/app";
+import { useAppStore } from "@/stores/modules/app";
 
-const { login } = useLoginStore();
+const { login } = useAppStore();
 
 const options = reactive({
   text: "Ingot",

@@ -1,11 +1,53 @@
 import Http from "@/net";
-import type { R } from "@/models";
+import type { R, PreAuthorizeResult, AuthorizaResult } from "@/models";
+import { AES } from "@/utils/encrypt";
+import { useLoginStore } from "@/stores/modules/login";
 
 /**
  * 预授权
  */
-export function PreAuthorizeAPI(): Promise<R<string>> {
-  return Http.get<string>("/oauth2/test", null, {
-    permit: true,
+export function PreAuthorizeAPI({
+  username,
+  password,
+  code,
+}: {
+  username: string;
+  password: string;
+  code?: string;
+}): Promise<R<PreAuthorizeResult>> {
+  const loginStore = useLoginStore();
+  const pre_grant_type = loginStore.preGrantType;
+  const afterEncrypt = AES({
+    data: { password },
+    keys: ["password"],
+  });
+  // application/x-www-form-urlencoded
+  const data = new URLSearchParams({
+    username,
+    password: afterEncrypt.password,
+  });
+  const parameter = toRaw(loginStore.requiredParameters);
+  return Http.post<PreAuthorizeResult>("/api/auth/oauth2/pre_authorize", data, {
+    params: {
+      _vc_code: code,
+      pre_grant_type,
+      ...parameter,
+    },
+  });
+}
+
+/**
+ * 授权认证
+ */
+export function AuthorizeAPI(tenant: string): Promise<R<AuthorizaResult>> {
+  const loginStore = useLoginStore();
+  const pre_grant_type = loginStore.preGrantType;
+  const parameter = toRaw(loginStore.requiredParameters);
+  return Http.get<AuthorizaResult>("/api/auth/oauth2/authorize", null, {
+    params: {
+      org: tenant,
+      pre_grant_type,
+      ...parameter,
+    },
   });
 }

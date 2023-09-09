@@ -6,7 +6,6 @@
         <Transition name="fade-transform" mode="out-in">
           <SelectTenant
             v-if="isStepOneSuccess"
-            :code="authorizeResult.code"
             :list="authorizeResult.allows"
             @back="handleBackToLoginView"
           />
@@ -33,7 +32,7 @@
 </template>
 <script setup lang="ts">
 import type { PreAuthorizeResult } from "@/models";
-import { useLoginStore } from "@/stores/modules/app";
+import { useAppStore } from "@/stores/modules/app";
 import PasswordView from "./password/PasswordView.vue";
 import QrCodeView from "./qrcode/QrCodeView.vue";
 import SelectTenant from "./select-tenant/SelectTenant.vue";
@@ -41,7 +40,7 @@ import PasswordLoginImage from "@/assets/password-login.png";
 import QrCodeLoginImage from "@/assets/qrcode-login.png";
 import "./login.css";
 
-const { login } = useLoginStore();
+const { login } = useAppStore();
 const bannerStyle = `background-image: url("${login.loginBanner}");`;
 const isScanLogin = ref(false); // 是否为扫码登录
 const isStepOneSuccess = ref(false); // 是否预授权成功
