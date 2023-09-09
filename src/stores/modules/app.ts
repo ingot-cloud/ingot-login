@@ -7,6 +7,7 @@ export const useLoginStore = defineStore("app.login", () => {
   const login = reactive<LoginConfig>({
     copyright: import.meta.env.VITE_APP_COPYRIGHT,
     loginBanner: import.meta.env.VITE_APP_LOGIN_BANNER,
+    errorImage: import.meta.env.VITE_APP_ERROR_IMAGE,
     title: import.meta.env.VITE_APP_LOGIN_TITLE,
     qrcodeTitle: import.meta.env.VITE_APP_LOGIN_QRCODE_TITLE,
     desc: import.meta.env.VITE_APP_LOGIN_DESC,

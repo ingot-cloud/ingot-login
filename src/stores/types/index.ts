@@ -11,6 +11,10 @@ export interface LoginConfig {
    */
   loginBanner: string;
   /**
+   * error 图片
+   */
+  errorImage: string;
+  /**
    * 登录title
    */
   title: string;

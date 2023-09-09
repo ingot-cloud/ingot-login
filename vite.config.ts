@@ -1,5 +1,4 @@
 import { fileURLToPath, URL } from "node:url";
-import { resolve } from "path";
 
 import { defineConfig, loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
@@ -31,20 +30,20 @@ export default defineConfig(({ mode, command, ssrBuild }) => {
             title: getViteEnv("VITE_APP_TITLE"),
           },
         },
-        minify: true,
-        pages: [
-          {
-            filename: "challenge",
-            entry: "/src/pages/oauth2/challenge/main.ts",
-            template: "challenge.html",
-            injectOptions: {
-              data: {
-                //将环境变量 VITE_APP_TITLE 赋值给 title 方便 html页面使用 title 获取系统标题
-                title: getViteEnv("VITE_APP_TITLE"),
-              },
-            },
-          },
-        ],
+        // minify: true,
+        // pages: [
+        //   {
+        //     filename: "challenge",
+        //     entry: "/src/pages/oauth2/challenge/main.ts",
+        //     template: "challenge.html",
+        //     injectOptions: {
+        //       data: {
+        //         //将环境变量 VITE_APP_TITLE 赋值给 title 方便 html页面使用 title 获取系统标题
+        //         title: getViteEnv("VITE_APP_TITLE"),
+        //       },
+        //     },
+        //   },
+        // ],
       }),
       createSvgIconsPlugin({
         // 指定需要缓存的图标文件夹
