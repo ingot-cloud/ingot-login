@@ -9,7 +9,7 @@
     <div class="login-container">
       <LoginInput
         v-model="formModel.username"
-        placeholder="请输入账号"
+        placeholder="请输入手机号/账号"
         clearable
         @keyup.enter="handleLogin"
       ></LoginInput>
