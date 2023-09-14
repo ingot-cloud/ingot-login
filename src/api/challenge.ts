@@ -29,6 +29,7 @@ export function PreAuthorizeAPI({
   const parameter = toRaw(loginStore.requiredParameters);
   return Http.post<PreAuthorizeResult>("/api/auth/oauth2/pre_authorize", data, {
     params: {
+      user_type: "0",
       _vc_code: code,
       pre_grant_type,
       ...parameter,
