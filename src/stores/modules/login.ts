@@ -1,11 +1,20 @@
 import type { RequiredParameters } from "../types";
 import type { LocationQuery } from "vue-router";
-import { PreAuthorizeAPI, AuthorizeAPI } from "@/api/challenge";
+import {
+  PreAuthorizeAPI,
+  AuthorizeAPI,
+  SessionAuthorizeAPI,
+} from "@/api/challenge";
 import type { PreAuthorizeResult } from "@/models";
 
 export const useLoginStore = defineStore("app.login", () => {
   const requiredParameters = reactive<RequiredParameters>({});
   const preGrantType = ref("password");
+  const preAuthorizeResult = ref<PreAuthorizeResult | undefined>(undefined);
+
+  const getPreAuthorizeResult = computed(() => {
+    return preAuthorizeResult.value;
+  });
 
   const changePreGrantType = (value: string) => {
     preGrantType.value = value;
@@ -35,12 +44,14 @@ export const useLoginStore = defineStore("app.login", () => {
     code?: string;
   }): Promise<PreAuthorizeResult> => {
     return new Promise((resolve, reject) => {
+      preAuthorizeResult.value = undefined;
       PreAuthorizeAPI({
         username,
         password,
         code,
       })
         .then((response) => {
+          preAuthorizeResult.value = response.data;
           resolve(response.data);
         })
         .catch((err) => {
@@ -63,12 +74,28 @@ export const useLoginStore = defineStore("app.login", () => {
     });
   };
 
+  const sessionAuthorize = () => {
+    return new Promise((resolve, reject) => {
+      preAuthorizeResult.value = undefined;
+      SessionAuthorizeAPI()
+        .then((response) => {
+          preAuthorizeResult.value = response.data;
+          resolve(response.data);
+        })
+        .catch(() => {
+          reject();
+        });
+    });
+  };
   return {
     requiredParameters,
     preGrantType,
+    preAuthorizeResult,
+    getPreAuthorizeResult,
     changePreGrantType,
     set,
     authorizeCodeRequest,
     preAuthorize,
+    sessionAuthorize,
   };
 });

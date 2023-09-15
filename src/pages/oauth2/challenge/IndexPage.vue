@@ -31,9 +31,9 @@
   </div>
 </template>
 <script setup lang="ts">
-import { SessionAuthorizeAPI } from "@/api/challenge";
 import type { PreAuthorizeResult } from "@/models";
 import { useAppStore } from "@/stores/modules/app";
+import { useLoginStore } from "@/stores/modules/login";
 import PasswordView from "./password/PasswordView.vue";
 import QrCodeView from "./qrcode/QrCodeView.vue";
 import SelectTenant from "./select-tenant/SelectTenant.vue";
@@ -43,6 +43,7 @@ import "./login.css";
 
 const loading = ref(false);
 const { login } = useAppStore();
+const loginStore = useLoginStore();
 const bannerStyle = `background-image: url("${login.loginBanner}");`;
 const isScanLogin = ref(false); // 是否为扫码登录
 const isStepOneSuccess = ref(false); // 是否预授权成功
@@ -59,15 +60,10 @@ const handleBackToLoginView = () => {
 };
 
 onMounted(() => {
-  loading.value = true;
-  SessionAuthorizeAPI()
-    .then((response) => {
-      loading.value = false;
-      handlePreAuthorizeSuccess(response.data);
-    })
-    .catch(() => {
-      loading.value = false;
-    });
+  const result = loginStore.getPreAuthorizeResult;
+  if (result && result.allows) {
+    handlePreAuthorizeSuccess(result);
+  }
 });
 </script>
 <style lang="postcss" scoped>

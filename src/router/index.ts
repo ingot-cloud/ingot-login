@@ -24,8 +24,18 @@ const router = createRouter({
           };
         }
         // 装载参数
-        useLoginStore().set(query);
-        return true;
+        const loginStore = useLoginStore();
+        loginStore.set(query);
+        return new Promise((resolve) => {
+          loginStore
+            .sessionAuthorize()
+            .then(() => {
+              resolve(true);
+            })
+            .catch(() => {
+              resolve(true);
+            });
+        });
       },
       component: () => import("@/pages/oauth2/challenge/IndexPage.vue"),
     },
