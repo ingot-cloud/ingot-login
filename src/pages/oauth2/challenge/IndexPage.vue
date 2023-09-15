@@ -2,7 +2,7 @@
   <div class="login-page login-page-visible">
     <div class="banner-area" role="banner-area" :style="bannerStyle"></div>
     <div class="login-area">
-      <div class="login-box">
+      <div class="login-box" v-loading="loading">
         <Transition name="fade-transform" mode="out-in">
           <SelectTenant
             v-if="isStepOneSuccess"
@@ -31,6 +31,7 @@
   </div>
 </template>
 <script setup lang="ts">
+import { SessionAuthorizeAPI } from "@/api/challenge";
 import type { PreAuthorizeResult } from "@/models";
 import { useAppStore } from "@/stores/modules/app";
 import PasswordView from "./password/PasswordView.vue";
@@ -40,6 +41,7 @@ import PasswordLoginImage from "@/assets/password-login.png";
 import QrCodeLoginImage from "@/assets/qrcode-login.png";
 import "./login.css";
 
+const loading = ref(false);
 const { login } = useAppStore();
 const bannerStyle = `background-image: url("${login.loginBanner}");`;
 const isScanLogin = ref(false); // 是否为扫码登录
@@ -55,6 +57,18 @@ const handlePreAuthorizeSuccess = (result: PreAuthorizeResult) => {
 const handleBackToLoginView = () => {
   isStepOneSuccess.value = false;
 };
+
+onMounted(() => {
+  loading.value = true;
+  SessionAuthorizeAPI()
+    .then((response) => {
+      loading.value = false;
+      handlePreAuthorizeSuccess(response.data);
+    })
+    .catch(() => {
+      loading.value = false;
+    });
+});
 </script>
 <style lang="postcss" scoped>
 .login-page {

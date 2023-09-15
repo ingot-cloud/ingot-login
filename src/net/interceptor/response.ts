@@ -1,8 +1,7 @@
 import type { AxiosResponse, AxiosError, AxiosRequestConfig } from "axios";
-import { Message, Confirm } from "@/utils/message";
+import { Message } from "@/utils/message";
 import type { R } from "@/models";
 import { StatusCode } from "@/net/status-code";
-import { isString } from "@/utils";
 
 /**
  * 未知响应实体
