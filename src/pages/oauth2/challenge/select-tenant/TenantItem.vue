@@ -27,6 +27,7 @@ defineProps({
 </script>
 <style scoped lang="postcss">
 .tenant-item {
+  @apply cursor-pointer;
   min-height: 48px;
   margin-top: 12px;
   padding: 10px;
