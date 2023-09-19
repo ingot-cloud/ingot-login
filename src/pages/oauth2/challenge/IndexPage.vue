@@ -59,7 +59,7 @@ const handleBackToLoginView = () => {
   isStepOneSuccess.value = false;
 };
 
-onMounted(() => {
+onBeforeMount(() => {
   const result = loginStore.getPreAuthorizeResult;
   if (result && result.allows) {
     handlePreAuthorizeSuccess(result);

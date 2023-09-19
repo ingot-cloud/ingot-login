@@ -1,7 +1,7 @@
 import { useLoginStore } from "@/stores/modules/login";
 
 const formModel = reactive({
-  username: "${aaaa}",
+  username: "",
   password: "",
   code: "",
 });
