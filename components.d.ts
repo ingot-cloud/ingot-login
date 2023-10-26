@@ -11,6 +11,7 @@ declare module '@vue/runtime-core' {
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
     ElImage: typeof import('element-plus/es')['ElImage']
     ElInput: typeof import('element-plus/es')['ElInput']
+    ElProgress: typeof import('element-plus/es')['ElProgress']
     'IEp:arrowLeft': typeof import('~icons/ep/arrow-left')['default']
     InButton: typeof import('./src/components/InButton.vue')['default']
     InContainer: typeof import('./src/components/container/InContainer.vue')['default']
