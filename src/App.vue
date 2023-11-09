@@ -10,7 +10,7 @@
 <script lang="ts" setup>
 import zhCn from "element-plus/lib/locale/lang/zh-cn";
 
-const componentSize = "default";
+const componentSize = "default" as any;
 const buttonConfig = reactive({
   autoInsertSpace: false,
 });

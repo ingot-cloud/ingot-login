@@ -26,7 +26,7 @@ const route = useRoute();
 const handleBack = () => {
   const query = route.query;
   if (query.redirect_uri) {
-    window.location.href = query.redirect_uri;
+    window.location.href = query.redirect_uri as string;
   }
 };
 </script>
