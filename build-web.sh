@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 
-source ./.local_env
-
 INNER_VERSION=0.1.0
-MODULE_NAME=ingot-login
+MODULE_NAME=web-login
 
 echo "开始打包${MODULE_NAME}:${INNER_VERSION}"
 

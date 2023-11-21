@@ -2,7 +2,7 @@
 
 version=0.1.0
 serviceName=ingot-login-${version}
-imageName=docker-registry.ingotcloud.top/ingot/ingot-login:${version}
+imageName=docker-registry.ingotcloud.top/ingot/web-login:${version}
 
 VIRTUAL_HOST=login.ingotcloud.top
 VIRTUAL_PORT=3000
