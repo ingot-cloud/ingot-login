@@ -11,7 +11,6 @@ interface ImportMetaEnv {
   readonly VITE_APP_AES: string;
   readonly VITE_APP_COPYRIGHT: string;
   readonly VITE_APP_LOGIN_BANNER: string;
-  readonly VITE_APP_LOGIN_BANNER: string;
   readonly VITE_APP_LOGIN_TITLE: string;
   readonly VITE_APP_LOGIN_DESC: string;
 }

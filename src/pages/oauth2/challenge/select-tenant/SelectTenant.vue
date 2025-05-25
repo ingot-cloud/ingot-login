@@ -68,8 +68,8 @@ const handleItemClick = (params: TenantItem) => {
   --title-box-height: 70px;
   --title-box-margin-bottom: 30px;
   --scroll-height: calc(
-    var(--login-box-height) - var(--tenant-box-padding-tb) * 2 -
-      var(--title-box-height) - var(--title-box-margin-bottom)
+    var(--login-box-height) - var(--tenant-box-padding-tb) * 2 - var(--title-box-height) -
+      var(--title-box-margin-bottom)
   );
 
   padding: var(--tenant-box-padding-tb) 80px;

@@ -1,4 +1,9 @@
-import type { AxiosResponse, AxiosError, AxiosRequestConfig } from "axios";
+import type {
+  AxiosResponse,
+  AxiosError,
+  AxiosRequestConfig,
+  InternalAxiosRequestConfig,
+} from "axios";
 import { Message } from "@/utils/message";
 import type { R } from "@/models";
 import { StatusCode } from "@/net/status-code";
@@ -13,7 +18,7 @@ const UnknownResponse: R = {
   status: Number(StatusCode.Unknown),
   statusText: "网络异常，请稍后重试",
   headers: {},
-  config: {},
+  config: {} as InternalAxiosRequestConfig,
 };
 
 const axiosResponseToR = (response?: AxiosResponse<R>): R => {
@@ -35,7 +40,7 @@ const axiosResponseToR = (response?: AxiosResponse<R>): R => {
  */
 const bizResponseFailureHandler = (
   config: AxiosRequestConfig,
-  response = UnknownResponse
+  response = UnknownResponse,
 ): Promise<R> => {
   // 如果手动处理，则直接返回
   if (config.manualProcessingFailure) {
@@ -75,8 +80,5 @@ export const onResponseFulfilled = (response: AxiosResponse<R>): Promise<R> => {
  * @param error
  */
 export const onResponseRejected = (error: AxiosError<R>): Promise<R> => {
-  return bizResponseFailureHandler(
-    error.config || {},
-    axiosResponseToR(error.response)
-  );
+  return bizResponseFailureHandler(error.config || {}, axiosResponseToR(error.response));
 };

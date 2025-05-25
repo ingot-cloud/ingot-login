@@ -8,12 +8,7 @@
         <slot name="top"> </slot>
       </div>
       <div class="inner-container">
-        <el-backtop
-          v-if="showBacktop"
-          target=".inner-container"
-          :right="60"
-          :bottom="60"
-        >
+        <el-backtop v-if="showBacktop" target=".inner-container" :right="60" :bottom="60">
           <div flex items-center justify-center>
             <i-material-symbols:vertical-align-top-rounded />
           </div>

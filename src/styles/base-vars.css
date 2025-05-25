@@ -31,7 +31,7 @@
   --in-text-color-primary: var(--el-text-color-primary);
   --in-text-color-secondary: var(--el-text-color-secondary);
   --in-box-shadow: var(--el-box-shadow);
-  
+
   --in-bg-color: var(--el-bg-color);
   --in-bg-color-page: var(--el-bg-color-page);
   --in-bg-color-mute: #f2f2f2;

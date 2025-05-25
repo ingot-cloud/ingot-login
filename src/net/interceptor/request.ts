@@ -1,8 +1,8 @@
-import type { AxiosRequestConfig, AxiosError } from "axios";
+import type { InternalAxiosRequestConfig, AxiosError } from "axios";
 
 export const onRequestFulfilled = (
-  config: AxiosRequestConfig
-): AxiosRequestConfig => {
+  config: InternalAxiosRequestConfig,
+): InternalAxiosRequestConfig => {
   return config;
 };
 

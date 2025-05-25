@@ -9,9 +9,7 @@ import {
 import { FileSystemIconLoader } from "@iconify/utils/lib/loader/node-loaders";
 
 export default defineConfig({
-  rules: [
-    [/^line-height-(.+)$/, ([, d]) => ({ "line-height": `${+d / 4}rem` })],
-  ],
+  rules: [[/^line-height-(.+)$/, ([, d]) => ({ "line-height": `${+d / 4}rem` })]],
   shortcuts: [
     ["text-icon", "text-1.4em!"],
     ["color-fade", "text-gray-900:50 dark:text-gray-300:50"],
@@ -25,11 +23,9 @@ export default defineConfig({
       // cdn: 'https://esm.sh/',
       // When using bundlers, you can provide the collections using dynamic imports so they will be bundler as async chunk and loaded on demand.
       collections: {
-        carbon: () =>
-          import("@iconify-json/carbon/icons.json").then((i) => i.default),
+        carbon: () => import("@iconify-json/carbon/icons.json").then((i) => i.default),
         ep: () => import("@iconify-json/ep/icons.json").then((i) => i.default),
-        mdi: () =>
-          import("@iconify-json/mdi/icons.json").then((i) => i.default),
+        mdi: () => import("@iconify-json/mdi/icons.json").then((i) => i.default),
         ingot: FileSystemIconLoader("./src/assets/icons"),
       },
       scale: 1.4,

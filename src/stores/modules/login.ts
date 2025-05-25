@@ -1,10 +1,6 @@
 import type { RequiredParameters } from "../types";
 import type { LocationQuery } from "vue-router";
-import {
-  PreAuthorizeAPI,
-  AuthorizeAPI,
-  SessionAuthorizeAPI,
-} from "@/api/challenge";
+import { PreAuthorizeAPI, AuthorizeAPI, SessionAuthorizeAPI } from "@/api/challenge";
 import type { PreAuthorizeResult } from "@/models";
 
 export const useLoginStore = defineStore("app.login", () => {

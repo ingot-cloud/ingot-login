@@ -1,11 +1,6 @@
 <template>
   <div class="in-container">
-    <el-backtop
-      v-if="showBacktop"
-      target=".in-container"
-      :right="60"
-      :bottom="60"
-    >
+    <el-backtop v-if="showBacktop" target=".in-container" :right="60" :bottom="60">
       <div flex items-center justify-center>
         <i-material-symbols:vertical-align-top-rounded />
       </div>

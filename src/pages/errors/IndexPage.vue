@@ -6,10 +6,7 @@
       <div class="page-main-desc">
         {{ route.query.errorMsg }}
       </div>
-      <div
-        class="page-main-btn base-comp-button base-comp-button-type-default"
-        @click="handleBack"
-      >
+      <div class="page-main-btn base-comp-button base-comp-button-type-default" @click="handleBack">
         返回
       </div>
     </div>

@@ -15,11 +15,7 @@
             </div>
             <Transition name="fade-transform" mode="out-in">
               <QrCodeView v-if="isScanLogin" />
-              <PasswordView
-                v-else
-                @success="handlePreAuthorizeSuccess"
-                :is-show="true"
-              />
+              <PasswordView v-else @success="handlePreAuthorizeSuccess" :is-show="true" />
             </Transition>
           </div>
         </Transition>
