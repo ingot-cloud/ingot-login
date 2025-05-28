@@ -2,10 +2,10 @@ import {
   defineConfig,
   presetAttributify,
   presetIcons,
-  presetUno,
   presetWebFonts,
   transformerDirectives,
 } from "unocss";
+import presetWind3 from "@unocss/preset-wind3";
 import { FileSystemIconLoader } from "@iconify/utils/lib/loader/node-loaders";
 
 export default defineConfig({
@@ -16,7 +16,7 @@ export default defineConfig({
     ["img-resize", "resize max-w-full h-auto"],
   ],
   presets: [
-    presetUno(),
+    presetWind3(),
     presetAttributify(),
     // 预设 icon，class匹配icon
     presetIcons({
