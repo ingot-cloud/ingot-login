@@ -24,13 +24,18 @@ export const AES = async <T>(params: AESParams<T>) => {
   const result = JSON.parse(JSON.stringify(data));
 
   for (const key of keys) {
-    const value = result[key];
-    if (action === "encrypt") {
-      result[key] =
-        mode === "GCM" ? await encryptGCM(value, encodeKey) : encryptCBC(value, encodeKey);
-    } else {
-      result[key] =
-        mode === "GCM" ? await decryptGCM(value, encodeKey) : decryptCBC(value, encodeKey);
+    try {
+      const value = result[key];
+      console.log(2, value);
+      if (action === "encrypt") {
+        result[key] =
+          mode === "GCM" ? await encryptGCM(value, encodeKey) : encryptCBC(value, encodeKey);
+      } else {
+        result[key] =
+          mode === "GCM" ? await decryptGCM(value, encodeKey) : decryptCBC(value, encodeKey);
+      }
+    } catch (error) {
+      console.error("aes error", error);
     }
   }
 
