@@ -23,7 +23,7 @@ export function SessionAuthorizeAPI(): Promise<R<PreAuthorizeResult>> {
 /**
  * 预授权
  */
-export function PreAuthorizeAPI({
+export async function PreAuthorizeAPI({
   username,
   password,
   code,
@@ -34,7 +34,7 @@ export function PreAuthorizeAPI({
 }): Promise<R<PreAuthorizeResult>> {
   const loginStore = useLoginStore();
   const pre_grant_type = loginStore.preGrantType;
-  const afterEncrypt = AES({
+  const afterEncrypt = await AES({
     data: { password },
     keys: ["password"],
   });
